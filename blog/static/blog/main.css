@@ -1,0 +1,176 @@
+
+body {
+  background: #fafafa;
+  color: #333333;
+  margin-top: 5rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #444444;
+}
+
+ul {
+  margin: 0;
+}
+
+h1 {
+color: #000000;
+font-family: arial, sans-s;
+font-size: 32px;
+font-weight: bold;
+margin-top: 0px;
+margin-bottom: 1px;
+}
+h2 {
+color: #000000;
+font-family: arial, sans-serif;
+font-size: 32px;
+font-weight: bold;
+margin-top: 0px;
+margin-bottom: 1px;
+}
+h3 {
+color: #999999;
+font-family: arial, sans-serif;
+font-size: 16px;
+font-weight: normal;
+margin-top: 0px;
+margin-bottom: 1px;
+}
+h4 {
+color: #999999;
+font-family: arial, sans-serif;
+font-size: 16px;
+font-weight: normal;
+margin-top: 0px;
+margin-bottom: 1px;
+text-align: center;
+width: 100%;
+}
+
+#Title{
+  color: #ffffff;
+  font-family: arial, sans-serif;
+  font-size: 19px;
+  font-weight: bold;
+  margin-top: 0px;
+  margin-bottom: 1px;
+  
+  width: 100%;
+  }
+
+#base_home {
+  text-align: center ;
+  padding-bottom: 20px;
+  padding-top: 20px; 
+}
+#parallax_padding{
+  padding-bottom: 250px;
+  padding-top: 250px;
+  text-align: center;
+}
+#parallax {
+  /* The image used */
+  background-image: url('https://storage.googleapis.com/legalogical-django-292312-media/Parl.jpg');
+  
+  /* Full height */
+  height: 100%;
+  text-align: center;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+@media only screen and (max-device-width: 1366px) {
+  .parallax {
+    background-attachment: scroll;
+  }
+}
+.bg-steel {
+  background-color: #000000;
+}
+
+.site-header .navbar-nav .nav-link {
+  color: #cbd5db;
+}
+#Footer{
+  padding-bottom: 30px;
+  padding-top: 30px;
+}
+#Copyright {
+  color: #ffffff;
+  font-family: arial, sans-serif;
+  font-size: 12px;
+  font-weight: 100;
+  margin-top: 0px;
+  margin-bottom: 1px;
+
+  padding-bottom: 10px;
+  padding-top: 20px;
+}
+
+.site-header .navbar-nav .nav-link:hover {
+  color: #ffffff;
+}
+
+.site-header .navbar-nav .nav-link.active {
+  font-weight: 500;
+}
+
+.content-section {
+  background: #ffffff;
+  padding: 10px 20px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+
+.article-title {
+  color: #444444;
+}
+
+a.article-title:hover {
+  color: #428bca;
+  text-decoration: none;
+}
+
+.article-content {
+  white-space: pre-line;
+}
+
+.article-img {
+  height: 65px;
+  width: 65px;
+  margin-right: 16px;
+}
+
+.article-metadata {
+  padding-bottom: 1px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #e3e3e3
+}
+
+.article-metadata a:hover {
+  color: #333;
+  text-decoration: none;
+}
+
+.article-svg {
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+}
+
+.account-img {
+  height: 125px;
+  width: 125px;
+  margin-right: 20px;
+  margin-bottom: 16px;
+}
+
+.account-heading {
+  font-size: 2.5rem;
+}
+

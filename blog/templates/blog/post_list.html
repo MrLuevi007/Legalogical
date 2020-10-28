@@ -1,0 +1,62 @@
+{% extends "blog/base.html"%}
+{% block content%}
+    <form method='GET' class="form-inline">
+      <div class="container" style="padding-bottom: 2rem;">
+        <div class="row justify-content-md-center">
+          <div class="col-md-auto">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name='q' value='{{ request.GET.q }}'>
+          </div>
+          <div class="col col-lg-2">
+            <input class="button" type='submit' value="Search">
+          </div>
+        </div>
+      </div>
+    </form>
+
+{% for object in object_list%}<a href="/post/{{object.id}}/">
+	<div class="card2" style="padding-bottom: 2rem; ">
+    <div class="blog-card spring-fever">
+      <img src="{{object.picture.url}}" style="max-width: 550px;">
+      <div class="title-content">
+        <h3 id=TITLE><a href="/post/{{object.id}}/">{{object.title}}</a></h3>
+        <div class="intro"> <a href="#">{{ object.author }}</a> </div>
+      </div>
+      <div class="card-info">{{ object.content|truncatewords:20 }} 
+        <a href="/post/{{object.id}}/">Read Article<span class="licon icon-arr icon-black"></span></a>
+      </div>
+      <div class="utility-info">
+        <ul class="utility-list">
+          <li><span class="licon icon-like"></span>{{object.CountVote}}</li>
+          <li><span class="licon icon-com"></span>{{object.comms_number}}</li>
+          <li><span class="licon icon-dat"></span>{{ object.date_posted | date:"d M, Y" }}</li>
+        </ul>
+      </div>
+      <div class="gradient-overlay"></div>
+      <div class="color-overlay"></div>
+    </div><!-- /.blog-card -->
+  </div>	</a>
+{% endfor %}
+{% if is_paginated %}
+      <div class="container">
+        <div class="row justify-content-center">
+          {% if page_obj.has_previous %}
+            <a class="btn btn-outline-info mb-4" href="?page=1">|<<</a>
+            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}"><</a>
+          {% endif %}
+
+          {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+              <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+              <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+            {% endif %}
+          {% endfor %}
+
+          {% if page_obj.has_next %}
+            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">></a>
+            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">>>|</a>
+          {% endif %}
+        </div>
+      </div>
+{% endif %}
+{%endblock content%}	

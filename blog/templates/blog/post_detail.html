@@ -1,0 +1,100 @@
+{% extends "blog/base.html"%}
+{% block content%}
+{% load crispy_forms_tags %}
+{%load static%}	
+
+	<div style="position: fixed;left: 15px;bottom: 110px;">
+		<div>
+			{% if Up %}
+			<a href="{% url 'Up-Vote' Post.id %}"> <img src="{% static '/blog/logos/ups.svg'%}"></a>
+			{% else %}
+			<a href="{% url 'Up-Vote' Post.id %}"> <img src="{% static '/blog/logos/up.svg'%}" ></a>
+			{% endif %}
+		</div>
+		<div>
+			<a href="{% url 'No-Vote' Post.id %}">{{Votes}}</a>			
+		</div>
+		<div>
+			{% if Down %}
+			<a href="{% url 'Down-Vote' Post.id %}"> <img src="{% static '/blog/logos/downs.svg'%}" ></a>
+			{% else %}
+			<a href="{% url 'Down-Vote' Post.id %}"> <img src="{% static '/blog/logos/down.svg'%}" ></a>
+			{% endif %}
+		</div>
+	</div>			
+	<article class="media content-section">
+		
+		<div class="media-body">
+		    <div class="article-metadata">
+		      	<div class="container">
+		      	<div class="row">
+		      		<div class=".col-12 .col-md-8 align-self-center" >
+		      			<img class="rounded-circle article-img" src="{{Post.author.profile.image.url}}">
+		      			{{ Post.author }}
+		     			
+		      		</div>
+			      	<div class="col" >
+			      		<div>
+			      			{% if Au  %}
+						      <a class='btn btn-outline-danger' href="{% url 'post-delete' Post.id %}">delete</a>
+						      <a class='btn btn-outline-secondary' href="{% url 'post-update' Post.id %}">Update</a>
+		           			{% endif %}	 
+			      		</div>
+			      		
+			      	</div>
+			    </div> </div>
+		    </div>
+		    <h2>{{ Post.title }}</h2>
+		    <small class="text-muted">{{ Post.date_posted|date:"d M, Y" }}</small><br>
+		    <div class="container">
+		    	<div class="row justify-content-center">
+		    		<div class=".col-12 .col-md-6">
+		    			<div style="justify-content: center;">
+		    				<img src="{{Post.picture.url}}" style=" max-width: 400px; width: 100%; height: auto; align-items: center; max-height: 400px; padding-bottom: 1rem;padding-top: 1rem">
+		    			</div>
+		    		</div>
+		    	</div>
+		    </div> 
+		    <p class="article-content">{{ Post.content }}</p>
+		</div>
+	</article>
+<div class='container-section'>
+	<form method='POST'>
+		{% csrf_token %}
+		<fieldset class='form-group'>
+			<legend class='border-bottom mb-4'>
+				Post a Comment				
+			</legend>
+			{{ comm | crispy }}	
+		</fieldset>
+		<div class = 'form-group'>
+			<button class ='btn btn-outline-info' type='submit'>
+				Post			
+			</button>
+		</div>
+	</form>
+<div>
+<br><br>
+<div class="container">
+	{%for comm in comms%}
+	<div class="row" style="background-color: #ffffff; padding-top: 8px">			
+		<div class="col-1">
+	    	<img class="rounded-circle account-img" src="{{comm.comm_user.profile.image.url}}" style="max-width: 40px; max-height: 40px">
+	   	</div>
+	   	<div class="col-11" style="text-align: left;" >
+	      		<h5>{{comm.comm_user.username}}</h5>
+	      		<span class="date" style="font-size: 11px; color: #989898;">{{ comm.date_posted|date:"d M, Y" }}</span>
+	      		{% if comm.comm_user.username == user.username %}
+	      		<a href="{% url 'comment-delete' comm.id %}"> <span class="muted" style="font-size: 11px;color: #989898;">delete</span></a>
+	      		{% endif %}
+	      		<p style="text-align: left; color: #000000">{{comm.comment}}</p>
+	      		
+	      		
+	   	</div>
+	  <!-- FORM HERE -->
+	</div><br>
+	{% endfor %}
+</div>
+
+
+{%endblock content%}	
