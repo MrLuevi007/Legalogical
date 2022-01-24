@@ -11,9 +11,6 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
 from pathlib import Path  
-import django_heroku
-from google.oauth2 import service_account      
-
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -29,7 +26,6 @@ SECRET_KEY = "v2^&7cz))xsxo=r*-z@%9#^(uumh$$%ron1hi!ch#24f^@m_11"
 # DEBUG = os.environ.get("DEBUG") == "True"
 
 DEBUG = True
-DEBUG_PROPAGATE_EXCEPTIONS = True
 
 
 ALLOWED_HOSTS = []
@@ -84,8 +80,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'django_trial.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
     'default': {
@@ -150,8 +144,6 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
-
-django_heroku.settings(locals())
 
 
 # DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
