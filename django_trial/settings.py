@@ -24,9 +24,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = "v2^&7cz))xsxo=r*-z@%9#^(uumh$$%ron1hi!ch#24f^@m_11"
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG") == "True"
+# DEBUG = os.environ.get("DEBUG") == "True"
+
+DEBUG = True
 DEBUG_PROPAGATE_EXCEPTIONS = True
 
 
@@ -134,7 +136,8 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT =   os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-
+# STATIC_ROOT =   os.path.join(BASE_DIR, 'static')
+# STATIC_URL = '/static/'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'blog-home'
@@ -151,18 +154,18 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
 django_heroku.settings(locals())
 
 
-DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
-COLLECTFAST_STRATEGY = "collectfast.strategies.gcloud.GoogleCloudStrategy"
-GS_BUCKET_NAME = ###Bucket_Name###
-GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
-       "path/to/file"
-    )
+# DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+# COLLECTFAST_STRATEGY = "collectfast.strategies.gcloud.GoogleCloudStrategy"
+# GS_BUCKET_NAME = Bucket_Name
+# GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
+#        "path/to/file"
+#     )
 
-STATICFILES_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
-GS_PROJECT_ID = 'legalogical-django-292312'
+# STATICFILES_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+# GS_PROJECT_ID = 'legalogical-django-292312'
 
-GS_DEFAULT_ACL = None
-GS_FILE_OVERWRITE = False
+# GS_DEFAULT_ACL = None
+# GS_FILE_OVERWRITE = False
 
 #CKEDITOR_BASEPATH = os.path.join(STATICFILES_STORAGE,"ckeditor/ckeditor/")
 
